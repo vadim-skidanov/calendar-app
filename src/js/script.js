@@ -1,1 +1,1 @@
-console.log("ZALUPA");
+console.log("Hey Dude!");
