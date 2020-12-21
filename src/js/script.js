@@ -1,3 +1,5 @@
+import { Date } from "./components/date";
+
 const daysOfMonth = [
   1,
   2,
@@ -37,9 +39,7 @@ const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 const displayDate = () => {
   const classDate = document.querySelector(".date");
   for (let day of daysOfMonth) {
-    classDate.innerHTML += `
-    <div class="date__day"> ${day}
-    `;
+    classDate.innerHTML += Date(day);
   }
 };
 
