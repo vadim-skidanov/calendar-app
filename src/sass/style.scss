@@ -1,3 +1,5 @@
+@import "./mixins.scss";
+
 $color-primary: #f64f59;
 $color-secondary: #c471ed;
 $color-white: #fff;
@@ -30,126 +32,129 @@ body {
   background: linear-gradient(to right, $color-secondary, $color-primary);
 }
 
-.calendar {
-  background: linear-gradient(to top, $color-primary, $color-secondary);
-  max-width: 100rem;
+.container {
+  width: 110rem;
   margin: 7rem auto;
-  padding: 10rem 10rem 5rem 20rem;
-  color: $color-white;
-  position: relative;
-  border-radius: 7px;
 
-  .month,
-  .day-of-week,
-  .date {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    align-items: center;
-  }
+  .calendar {
+    min-height: 800px;
 
-  .day-of-week {
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    cursor: default;
-  }
+    min-width: 60rem;
+    background: linear-gradient(to top, $color-primary, $color-secondary);
+    margin-left: 11.5rem;
+    margin-right: 7rem;
+    padding: 10rem 10rem 5rem 12rem;
+    color: $color-white;
+    position: relative;
+    border-radius: 7px;
 
-  .month {
-    margin-bottom: 5rem;
-    text-transform: uppercase;
-    padding: 0 1rem;
-
-    &__prev {
-      grid-column: 1 / 2;
-      cursor: pointer;
-      &:hover {
-        transform: scale(1.1);
-      }
-      // &-icon {
-      //   fill: $color-white;
-      //   width: 1.5rem;
-      //   height: 1.5rem;
-      // }
+    .day-of-week,
+    .date {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      // grid-template-rows: minamx(2rem, 2rem);
+      text-align: center;
+      align-items: center;
     }
 
-    &__present {
-      grid-column: 3 / span 3;
-      font-size: 5rem;
-      font-weight: 600;
+    .day-of-week {
+      text-transform: uppercase;
+      margin-bottom: 2rem;
       cursor: default;
     }
 
-    &__next {
-      grid-column: 7 / 8;
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-
-  .date {
-    grid-template-rows: repeat(6, 6vh);
-
-    &__day {
-      font-size: 1.7rem;
-      cursor: pointer;
-      transition: all 0.2s;
-
-      &:hover {
-        transform: scale(1.5) translateY(-2px);
-        box-shadow: 0 2rem 5rem rgba(#000, 0.1);
-        border-radius: 50%;
-      }
-    }
-  }
-
-  .event-popup {
-    position: absolute;
-    left: 0;
-    transform: translateX(-50%);
-    top: 4rem;
-    width: 25rem;
-    height: 85%;
-    color: $color-primary;
-    background: $color-white;
-    border-radius: 5px;
-
-    .user {
-      display: flex;
-      flex-direction: column;
-      margin-top: 8rem;
-      align-items: center;
+    .month {
       text-transform: uppercase;
-      &__img {
-        width: 8rem;
-        border-radius: 50%;
-        border: 5px $color-secondary solid;
-        position: absolute;
-        top: -2rem;
-        left: 50%;
-        transform: translateX(-50%);
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5rem 3.3rem;
+
+      &__prev {
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
 
-      &__role {
-        opacity: 0.5;
+      &__present {
+        font-size: 5rem;
+        font-weight: 600;
+        cursor: default;
+      }
+
+      &__next {
+        cursor: pointer;
+        justify-self: end;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
-    .event {
-      margin: 3rem 2rem;
-      &__time {
-        color: $color-secondary;
-        padding-bottom: 1rem;
-      }
 
-      &__objective {
-        padding-bottom: 1rem;
+    .date {
+      grid-template-rows: repeat(6, 7rem);
+
+      &__day {
+        font-size: 1.7rem;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+          transform: scale(1.5) translateY(-2px);
+          box-shadow: 0 2rem 5rem rgba(#000, 0.1);
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .event-popup {
+      position: absolute;
+      left: 0;
+      transform: translateX(-50%);
+      top: 4rem;
+      width: 20rem;
+      height: 85%;
+      color: $color-primary;
+      background: $color-white;
+      border-radius: 5px;
+
+      .user {
+        display: flex;
+        flex-direction: column;
+        margin-top: 8rem;
+        align-items: center;
+        text-transform: uppercase;
+        &__img {
+          width: 8rem;
+          border-radius: 50%;
+          border: 5px $color-secondary solid;
+          position: absolute;
+          top: -2rem;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &__role {
+          opacity: 0.5;
+        }
+      }
+      .event {
+        margin: 3rem 2rem;
+        &__time {
+          color: $color-secondary;
+          padding-bottom: 1rem;
+        }
+
+        &__objective {
+          padding-bottom: 1rem;
+        }
       }
     }
   }
 }
-
 .years {
   position: absolute;
   top: 4rem;
@@ -174,30 +179,7 @@ body {
       font-size: 2rem;
     }
 
-    &__past-4,
-    &__next-4 {
-      @include year(0.2, 0.8);
-      // opacity: 0.2;
-      // font-size: 0.8rem;
-    }
-
-    &__past-3,
-    &__next-3 {
-      opacity: 0.4;
-      font-size: 1.2rem;
-    }
-
-    &__past-2,
-    &__next-2 {
-      opacity: 0.6;
-      font-size: 1.5rem;
-    }
-
-    &__past-1,
-    &__next-1 {
-      opacity: 0.8;
-      font-size: 2rem;
-    }
+    @include calendar-years();
 
     &__current {
       font-size: 2.5rem;
