@@ -3,11 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link rel="stylesheet" href="./sass/style.scss" />
-    <script src="./js/script.js"></script>
+    <title>Calendar - Grid</title>
   </head>
   <body>
-    <h1>Hello World!!!</h1>
+    <section class="calendar">
+      <div class="month text-medium">
+        <div class="month__prev">
+          <!-- <svg class="month__prev-icon">
+            <use xlink:href="img/sprite.svg#icon-arrow-long-left"></use>
+          </svg> -->
+          &larr; <span class="month__prev-name"></span>feb</span>
+        </div>
+        <div class="month__present">march</div>
+        <div class="month__next">
+          <span class="month__next-name">apr</span> &rarr;
+        </div>
+      </div>
+
+      <div class="day-of-week text-medium">
+        <div>sun</div>
+        <div>mon</div>
+        <div>tue</div>
+        <div>wed</div>
+        <div>thu</div>
+        <div>fri</div>
+        <div>sat</div>
+      </div>
+
+      <div class="date">
+        <!-- <div class="date__row-1"> -->
+        <div class="date__day"></div>
+        <div class="date__day"></div>
+        <div class="date__day"></div>
+        <div class="date__day">1</div>
+        <div class="date__day">2</div>
+        <div class="date__day">3</div>
+        <div class="date__day">4</div>
+        <!-- </div>
+        <div class="date__row-2"> -->
+        <div class="date__day">5</div>
+        <div class="date__day">6</div>
+        <div class="date__day">7</div>
+        <div class="date__day">8</div>
+        <div class="date__day">9</div>
+        <div class="date__day">10</div>
+        <div class="date__day">11</div>
+        <!-- </div>
+        <div class="date__row-3"> -->
+        <div class="date__day">12</div>
+        <div class="date__day">13</div>
+        <div class="date__day">14</div>
+        <div class="date__day">15</div>
+        <div class="date__day">16</div>
+        <div class="date__day">17</div>
+        <div class="date__day">18</div>
+        <!-- </div>
+        <div class="date__row-4"> -->
+        <div class="date__day">19</div>
+        <div class="date__day">20</div>
+        <div class="date__day">21</div>
+        <div class="date__day">22</div>
+        <div class="date__day">23</div>
+        <div class="date__day">24</div>
+        <div class="date__day">25</div>
+        <!-- </div>
+        <div class="date__row-5"> -->
+        <div class="date__day">26</div>
+        <div class="date__day">27</div>
+        <div class="date__day">28</div>
+        <div class="date__day">29</div>
+        <div class="date__day">30</div>
+        <div class="date__day">31</div>
+        <div class="date__day"></div>
+        <!-- </div> -->
+      </div>
+
+      <div class="event-popup">
+        <div class="user">
+          <img src="img/my_img.jpg" alt="" class="user__img" />
+          <h2 class="user__name text-medium">vadim s.</h2>
+          <div class="user__role">web developer</div>
+        </div>
+        <div class="event text-medium">
+          <div class="event__time">9:00AM</div>
+          <div class="event__objective">Meeting with Ralph</div>
+          <div class="event__time">1:00PM</div>
+          <div class="event__objective">Brunch with Kim</div>
+          <div class="event__time">3:00PM</div>
+          <div class="event__objective">Grab groceries</div>
+        </div>
+      </div>
+      <div class="years">
+        <div class="year">
+          <div class="year__arrow-up">&uarr;</div>
+          <div class="year__past-4">2016</div>
+          <div class="year__past-3">2017</div>
+          <div class="year__past-2">2018</div>
+          <div class="year__past-1">2019</div>
+          <div class="year__current">2020</div>
+          <div class="year__next-1">2021</div>
+          <div class="year__next-2">2022</div>
+          <div class="year__next-3">2023</div>
+          <div class="year__next-4">2024</div>
+          <div class="year__arrow-down">&darr;</div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
