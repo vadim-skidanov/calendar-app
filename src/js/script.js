@@ -37,7 +37,7 @@ const daysOfMonth = [
 const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const displayDate = () => {
-  const classDate = document.querySelector(".date");
+  const parrentDate = document.querySelector(".date");
   for (let day of daysOfMonth) {
     classDate.innerHTML += Date(day);
   }

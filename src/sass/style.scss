@@ -43,7 +43,7 @@ body {
     background: linear-gradient(to top, $color-primary, $color-secondary);
     margin-left: 11.5rem;
     margin-right: 7rem;
-    padding: 10rem 10rem 5rem 12rem;
+    padding: 8rem 10rem 5rem 12rem;
     color: $color-white;
     position: relative;
     border-radius: 7px;
@@ -52,7 +52,6 @@ body {
     .date {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      // grid-template-rows: minamx(2rem, 2rem);
       text-align: center;
       align-items: center;
     }
@@ -69,7 +68,7 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 5rem 3.3rem;
+      margin: 5rem 2rem;
 
       &__prev {
         cursor: pointer;
@@ -102,11 +101,22 @@ body {
         cursor: pointer;
         transition: all 0.2s;
 
+        &:first-child {
+          grid-column: 7;
+        }
+
         &:hover {
           transform: scale(1.5) translateY(-2px);
           box-shadow: 0 2rem 5rem rgba(#000, 0.1);
           border-radius: 50%;
         }
+      }
+
+      &::before {
+        content: "";
+        height: 5px;
+        width: 5px;
+        background: green;
       }
     }
 
