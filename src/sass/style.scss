@@ -9,6 +9,10 @@ $color-white: #fff;
   font-size: $value2;
 }
 
+.text-small {
+  font-size: 1.4rem;
+}
+
 .text-medium {
   font-size: 1.7rem;
 }
@@ -30,6 +34,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 
   background: linear-gradient(to right, $color-secondary, $color-primary);
+  background-attachment: fixed;
 }
 
 .container {
@@ -70,26 +75,23 @@ body {
       align-items: center;
       margin: 5rem 2rem;
 
-      &__prev {
+      &__prev,
+      &__next {
         cursor: pointer;
+
         &:hover {
           transform: scale(1.1);
         }
       }
 
-      &__present {
+      &__current-name {
         font-size: 5rem;
         font-weight: 600;
         cursor: default;
       }
 
       &__next {
-        cursor: pointer;
         justify-self: end;
-
-        &:hover {
-          transform: scale(1.1);
-        }
       }
     }
 
@@ -101,8 +103,14 @@ body {
         cursor: pointer;
         transition: all 0.2s;
 
+        &-current {
+          font-size: 2.7rem;
+          // border: 1px #fff solid;
+          // border-radius: 50px;
+        }
+
         &:first-child {
-          grid-column: 7;
+          grid-column: 2;
         }
 
         &:hover {
@@ -110,13 +118,6 @@ body {
           box-shadow: 0 2rem 5rem rgba(#000, 0.1);
           border-radius: 50%;
         }
-      }
-
-      &::before {
-        content: "";
-        height: 5px;
-        width: 5px;
-        background: green;
       }
     }
 
@@ -180,8 +181,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    text-align: center;
     padding: 1.5rem;
     font-weight: 700;
     &__arrow-up,
@@ -189,18 +189,26 @@ body {
       font-size: 2rem;
     }
 
+    &__content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
     @include calendar-years();
 
     &__current {
       font-size: 2.5rem;
     }
   }
-
-  .year > * {
+  .year__arrow-up,
+  .year__arrow-down,
+  .year > * > * {
     transition: all 0.2s;
     &:hover {
       cursor: pointer;
-      transform: scale(1.1);
+      transform: scale(1.3);
     }
   }
 }

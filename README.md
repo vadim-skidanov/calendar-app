@@ -1,4 +1,4 @@
-# calendar-app
+# Calendar App
 
 ## Setup
 
