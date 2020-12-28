@@ -1,5 +1,6 @@
 import { dateOfMonth, daysInMonth } from "./components/date";
 import { Week } from "./components/week";
+import { year } from "./components/years";
 
 const date = new Date();
 
@@ -20,27 +21,10 @@ const years = {
 const displayYear = () => {
   for (let className in years) {
     const parentYear = document.querySelector(".year__content");
-    parentYear.innerHTML += `
-       <div class="${className}">${date.getFullYear() + years[className]}</div>
-    `;
+    const y = date.getFullYear() + years[className];
+    parentYear.innerHTML += year(y, className);
   }
 };
-
-// const currentYear = new Date().getFullYear();
-
-////////////////////  ! Date
-
-// const dates = [];
-// for (let i = 1; i <= 31; i++) {
-//   dates.push(i);
-// }
-
-// const displayDate = () => {
-//   const parentDate = document.querySelector(".date");
-//   for (let day of dates) {
-//     parentDate.innerHTML += dateOfMonth(day);
-//   }
-// };
 
 ////////////////////  ! Week
 
@@ -74,7 +58,6 @@ const displayMonth = () => {
     "December",
   ];
 
-  // const currentMonth = new Date();
   const prevMonth = date.getMonth() - 1;
   const nextMonth = date.getMonth() + 1;
 
