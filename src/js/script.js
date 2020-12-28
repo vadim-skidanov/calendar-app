@@ -1,5 +1,6 @@
 import { dateOfMonth, daysInMonth, startOfMonth } from "./components/date";
 import { Week } from "./components/week";
+import { year } from "./components/years";
 
 const date = new Date();
 const currentMonth = date.getMonth();
@@ -22,9 +23,8 @@ const years = {
 const displayYear = () => {
   for (let className in years) {
     const parentYear = document.querySelector(".year__content");
-    parentYear.innerHTML += `
-       <div class="${className}">${currentYear + years[className]}</div>
-    `;
+    const y = currentYear + years[className];
+    parentYear.innerHTML += year(y, className);
   }
 };
 
@@ -81,7 +81,7 @@ const displayMonth = () => {
 ////////////////////  ! Date
 
 const displayDate = () => {
-  const currMonthNrDays = daysInMonth(currentMonth + 1, date.getFullYear());
+  const currMonthNrDays = daysInMonth(currentMonth + 1, currentYear);
   const parentDate = document.querySelector(".date");
 
   for (let i = 1; i <= currMonthNrDays; i++) {
