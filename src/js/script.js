@@ -3,6 +3,8 @@ import { Week } from "./components/week";
 
 const date = new Date();
 
+const currentMonth = date.getMonth();
+const currentYear = date.getFullYear();
 ////////////////////  ! Year
 
 const years = {
@@ -21,26 +23,10 @@ const displayYear = () => {
   for (let className in years) {
     const parentYear = document.querySelector(".year__content");
     parentYear.innerHTML += `
-       <div class="${className}">${date.getFullYear() + years[className]}</div>
+       <div class="${className}">${currentYear + years[className]}</div>
     `;
   }
 };
-
-// const currentYear = new Date().getFullYear();
-
-////////////////////  ! Date
-
-// const dates = [];
-// for (let i = 1; i <= 31; i++) {
-//   dates.push(i);
-// }
-
-// const displayDate = () => {
-//   const parentDate = document.querySelector(".date");
-//   for (let day of dates) {
-//     parentDate.innerHTML += dateOfMonth(day);
-//   }
-// };
 
 ////////////////////  ! Week
 
@@ -74,11 +60,10 @@ const displayMonth = () => {
     "December",
   ];
 
-  // const currentMonth = new Date();
-  const prevMonth = date.getMonth() - 1;
-  const nextMonth = date.getMonth() + 1;
+  const prevMonth = currentMonth - 1;
+  const nextMonth = currentMonth + 1;
 
-  parentCurrent.textContent = months[date.getMonth()];
+  parentCurrent.textContent = months[currentMonth];
 
   if (prevMonth < 0) {
     parentPrev.textContent = months[prevMonth + 12];
@@ -96,15 +81,15 @@ const displayMonth = () => {
 ////////////////////  ! Date
 
 const displayDate = () => {
-  const currMonth = daysInMonth(date.getMonth() + 1, date.getFullYear());
+  const currMonthNrDays = daysInMonth(currentMonth + 1, date.getFullYear());
   const parentDate = document.querySelector(".date");
 
-  for (let i = 1; i <= currMonth; i++) {
+  for (let i = 1; i <= currMonthNrDays; i++) {
     parentDate.innerHTML += dateOfMonth(i);
   }
 
-  const current = document.querySelector(`.date__day-${date.getDate()}`);
-  current.classList.add("date__day-current");
+  const currentDate = document.querySelector(`.date__day-${date.getDate()}`);
+  currentDate.classList.add("date__day-current");
 };
 
 displayMonth();
