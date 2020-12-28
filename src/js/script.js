@@ -1,10 +1,10 @@
-import { dateOfMonth, daysInMonth } from "./components/date";
+import { dateOfMonth, daysInMonth, startOfMonth } from "./components/date";
 import { Week } from "./components/week";
 
 const date = new Date();
-
 const currentMonth = date.getMonth();
 const currentYear = date.getFullYear();
+
 ////////////////////  ! Year
 
 const years = {
@@ -90,6 +90,8 @@ const displayDate = () => {
 
   const currentDate = document.querySelector(`.date__day-${date.getDate()}`);
   currentDate.classList.add("date__day-current");
+  const className = document.querySelector(".date__day-1");
+  className.classList.add(`date__day-start-${startOfMonth(date).getDay()}`);
 };
 
 displayMonth();

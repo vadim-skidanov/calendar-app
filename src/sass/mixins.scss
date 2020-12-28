@@ -26,3 +26,11 @@
     }
   }
 }
+
+@mixin start-dates {
+  @for $i from 1 through 7 {
+    &-start-#{$i} {
+      grid-column: $i;
+    }
+  }
+}
