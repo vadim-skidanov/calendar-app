@@ -3,8 +3,8 @@ import { Week } from "./components/week";
 import { year } from "./components/years";
 
 const date = new Date();
-const currentMonth = date.getMonth();
 const currentYear = date.getFullYear();
+let currentMonth = date.getMonth();
 
 ////////////////////  ! Year
 
@@ -60,22 +60,50 @@ const displayMonth = () => {
     "December",
   ];
 
-  const prevMonth = currentMonth - 1;
-  const nextMonth = currentMonth + 1;
+  const shortMonths = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const changeMonth = () => {
+    if (currentMonth === 11) {
+      parentNext.textContent = shortMonths[currentMonth - 11];
+      parentPrev.textContent = shortMonths[currentMonth - 1];
+    } else if (currentMonth === 0) {
+      parentNext.textContent = shortMonths[currentMonth + 1];
+      parentPrev.textContent = shortMonths[currentMonth + 11];
+    } else {
+      parentNext.textContent = shortMonths[currentMonth + 1];
+      parentPrev.textContent = shortMonths[currentMonth - 1];
+    }
+  };
+
+  const goBack = document.querySelector(".month__prev");
+  const goNext = document.querySelector(".month__next");
 
   parentCurrent.textContent = months[currentMonth];
+  changeMonth();
 
-  if (prevMonth < 0) {
-    parentPrev.textContent = months[prevMonth + 12];
-  } else {
-    parentPrev.textContent = months[prevMonth];
-  }
-
-  if (nextMonth > 11) {
-    parentNext.textContent = months[nextMonth - 12];
-  } else {
-    parentNext.textContent = months[nextMonth];
-  }
+  goBack.addEventListener("click", () => {
+    if (currentMonth < 1) {
+      currentMonth += 11;
+      parentCurrent.textContent = months[currentMonth];
+    } else {
+      currentMonth -= 1;
+      parentCurrent.textContent = months[currentMonth];
+    }
+    changeMonth();
+  });
 };
 
 ////////////////////  ! Date
