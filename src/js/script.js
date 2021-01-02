@@ -75,7 +75,8 @@ const displayMonth = () => {
     "Dec",
   ];
 
-  const changeMonth = () => {
+  const displayCurrent = () => {
+    parentCurrent.textContent = months[currentMonth];
     if (currentMonth === 11) {
       parentNext.textContent = shortMonths[currentMonth - 11];
       parentPrev.textContent = shortMonths[currentMonth - 1];
@@ -88,22 +89,45 @@ const displayMonth = () => {
     }
   };
 
+  const changeMonthBack = () => {
+    goBack.addEventListener("click", () => {
+      if (currentMonth < 1) {
+        currentMonth += 11;
+        parentCurrent.textContent = months[currentMonth];
+      } else {
+        currentMonth -= 1;
+        parentCurrent.textContent = months[currentMonth];
+      }
+      displayCurrent();
+    });
+  };
+
+  const changeMonthNext = () => {
+    goNext.addEventListener("click", () => {
+      if (currentMonth < 0) {
+        currentMonth += 11;
+        parentCurrent.textContent = months[currentMonth];
+      } else if (currentMonth > 10) {
+        currentMonth -= 11;
+      } else {
+        currentMonth += 1;
+        parentCurrent.textContent = months[currentMonth];
+      }
+      displayCurrent();
+    });
+  };
+
   const goBack = document.querySelector(".month__prev");
   const goNext = document.querySelector(".month__next");
 
-  parentCurrent.textContent = months[currentMonth];
-  changeMonth();
+  // parentCurrent.textContent = months[currentMonth];
 
-  goBack.addEventListener("click", () => {
-    if (currentMonth < 1) {
-      currentMonth += 11;
-      parentCurrent.textContent = months[currentMonth];
-    } else {
-      currentMonth -= 1;
-      parentCurrent.textContent = months[currentMonth];
-    }
-    changeMonth();
-  });
+  // changeMonth();
+  displayCurrent();
+  changeMonthBack();
+  changeMonthNext();
+  // goBack.addEventListener("click", () => changeMonthBack("back"));
+  // goNext.addEventListener("click", () => changeMonth("next"));
 };
 
 ////////////////////  ! Date
