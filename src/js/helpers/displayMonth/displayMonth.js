@@ -1,6 +1,7 @@
 import { months, shortMonths } from "./monthsList";
+import { displayDate } from "../displayDate/displayDate";
 
-export const displayMonth = (currentMonth) => {
+export const displayMonth = (currentMonth, currentYear, date) => {
   const parentCurrent = document.querySelector(".month__current-name");
   const parentPrev = document.querySelector(".month__prev-name");
   const parentNext = document.querySelector(".month__next-name");
@@ -49,7 +50,13 @@ export const displayMonth = (currentMonth) => {
         currentMonth += 1;
         parentCurrent.textContent = months[currentMonth];
       }
+
+      const newDate = new Date(
+        `${currentMonth + 1}/${date.getDate()}/${currentYear}`
+      );
+
       displayCurrent();
+      displayDate(currentMonth, currentYear, newDate);
     });
   };
 
