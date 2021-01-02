@@ -103,17 +103,20 @@ body {
         cursor: pointer;
         transition: all 0.2s;
 
-        &-current {
-          font-size: 2.7rem;
-          border: 1px #fff solid;
-          border-radius: 50px;
-        }
         @include start-dates;
 
         &:hover {
           transform: scale(1.5) translateY(-2px);
-          box-shadow: 0 2rem 5rem rgba(#000, 0.1);
-          border-radius: 50%;
+          // box-shadow: 0 2rem 5rem rgba(#000, 0.1);
+          border-radius: 50px;
+        }
+        &-current {
+          font-size: 2.7rem;
+          border: 1px #fff solid;
+          border-radius: 50px;
+          &:hover {
+            transform: scale(1.1) translateY(-2px);
+          }
         }
       }
     }
