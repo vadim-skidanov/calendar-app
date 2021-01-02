@@ -1,6 +1,6 @@
 import { months, shortMonths } from "./monthsList";
 
-export const displayMonths = (currentMonth) => {
+export const displayMonth = (currentMonth) => {
   const parentCurrent = document.querySelector(".month__current-name");
   const parentPrev = document.querySelector(".month__prev-name");
   const parentNext = document.querySelector(".month__next-name");
