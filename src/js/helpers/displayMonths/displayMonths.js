@@ -5,17 +5,39 @@ export const displayMonths = (currentMonth) => {
   const parentPrev = document.querySelector(".month__prev-name");
   const parentNext = document.querySelector(".month__next-name");
 
+  const switchSideMonthName = (next, prev) => {
+    parentNext.textContent = shortMonths[currentMonth + next];
+    parentPrev.textContent = shortMonths[currentMonth + prev];
+  };
+
   const displayCurrent = () => {
     parentCurrent.textContent = months[currentMonth];
+
     if (currentMonth === 11) {
-      parentNext.textContent = shortMonths[currentMonth - 11];
-      parentPrev.textContent = shortMonths[currentMonth - 1];
+      switchSideMonthName(-11, -1);
     } else if (currentMonth === 0) {
-      parentNext.textContent = shortMonths[currentMonth + 1];
-      parentPrev.textContent = shortMonths[currentMonth + 11];
+      switchSideMonthName(1, 11);
     } else {
-      parentNext.textContent = shortMonths[currentMonth + 1];
-      parentPrev.textContent = shortMonths[currentMonth - 1];
+      switchSideMonthName(1, -1);
+    }
+  };
+
+  const changeCurrentMonth = (next = false) => {
+    const firstMonth = next ? 0 : 1;
+    const symbol = next ? 1 : -1;
+
+    const switchCurrentMonthName = (value) => {
+      currentMonth += value;
+      parentCurrent.textContent = months[currentMonth];
+    };
+
+    if (currentMonth < firstMonth) {
+      switchCurrentMonthName(11);
+    } else if (currentMonth > 10 && next) {
+      switchCurrentMonthName(-11);
+    } else {
+      const value = 1 * symbol;
+      switchCurrentMonthName(value);
     }
   };
 
@@ -23,13 +45,7 @@ export const displayMonths = (currentMonth) => {
     const goBack = document.querySelector(".month__prev");
 
     goBack.addEventListener("click", () => {
-      if (currentMonth < 1) {
-        currentMonth += 11;
-        parentCurrent.textContent = months[currentMonth];
-      } else {
-        currentMonth -= 1;
-        parentCurrent.textContent = months[currentMonth];
-      }
+      changeCurrentMonth();
       displayCurrent();
     });
   };
@@ -38,15 +54,9 @@ export const displayMonths = (currentMonth) => {
     const goNext = document.querySelector(".month__next");
 
     goNext.addEventListener("click", () => {
-      if (currentMonth < 0) {
-        currentMonth += 11;
-        parentCurrent.textContent = months[currentMonth];
-      } else if (currentMonth > 10) {
-        currentMonth -= 11;
-      } else {
-        currentMonth += 1;
-        parentCurrent.textContent = months[currentMonth];
-      }
+      const next = true;
+
+      changeCurrentMonth(next);
       displayCurrent();
     });
   };
