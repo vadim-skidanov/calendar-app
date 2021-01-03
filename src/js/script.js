@@ -9,5 +9,5 @@ const currentMonth = date.getMonth();
 
 displayWeek();
 displayDate(currentMonth, currentYear, date);
-displayYear(currentYear);
+displayYear(currentYear, currentMonth, date);
 displayMonth(currentMonth, currentYear, date);

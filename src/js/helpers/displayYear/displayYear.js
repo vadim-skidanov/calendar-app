@@ -1,4 +1,5 @@
 import { year } from "../../components/years";
+import { displayDate } from "../displayDate/displayDate";
 
 const years = {
   "year__past-4": -4,
@@ -12,7 +13,7 @@ const years = {
   "year__next-4": 4,
 };
 
-export const displayYear = (currentYear) => {
+export const displayYear = (currentYear, currentMonth, date) => {
   const parentYear = document.querySelector(".year__content");
   const displayCurrent = () => {
     for (let className in years) {
@@ -21,12 +22,17 @@ export const displayYear = (currentYear) => {
     }
   };
 
+  const changeYear = () => {
+    return new Date(`${currentMonth + 1}/${date.getDate()}/${currentYear}`);
+  };
+
   const changeYearBack = () => {
     const goBack = document.querySelector(".year__arrow-up");
     goBack.addEventListener("click", () => {
       currentYear -= 1;
       parentYear.innerHTML = "";
       displayCurrent();
+      displayDate(currentMonth, currentYear, changeYear());
     });
   };
 
@@ -36,6 +42,7 @@ export const displayYear = (currentYear) => {
       currentYear += 1;
       parentYear.innerHTML = "";
       displayCurrent();
+      displayDate(currentMonth, currentYear, changeYear());
     });
   };
 

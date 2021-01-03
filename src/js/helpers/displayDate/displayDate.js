@@ -8,8 +8,10 @@ export const displayDate = (currentMonth, currentYear, date) => {
     parentDate.innerHTML += dateOfMonth(i);
   }
 
-  const cMonth = new Date().getMonth();
-  if (cMonth === currentMonth) {
+  const cDate = new Date();
+  const cMonth = cDate.getMonth();
+  const cYear = cDate.getFullYear();
+  if (cMonth === currentMonth && cYear === currentYear) {
     const currentDate = document.querySelector(`.date__day-${date.getDate()}`);
     currentDate.classList.add("date__day-current");
   }
