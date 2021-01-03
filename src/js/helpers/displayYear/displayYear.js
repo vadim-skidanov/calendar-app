@@ -13,9 +13,33 @@ const years = {
 };
 
 export const displayYear = (currentYear) => {
-  for (let className in years) {
-    const parentYear = document.querySelector(".year__content");
-    const y = currentYear + years[className];
-    parentYear.innerHTML += year(y, className);
-  }
+  const parentYear = document.querySelector(".year__content");
+  const displayCurrent = () => {
+    for (let className in years) {
+      const y = currentYear + years[className];
+      parentYear.innerHTML += year(y, className);
+    }
+  };
+
+  const changeYearBack = () => {
+    const goBack = document.querySelector(".year__arrow-up");
+    goBack.addEventListener("click", () => {
+      currentYear -= 1;
+      parentYear.innerHTML = "";
+      displayCurrent();
+    });
+  };
+
+  const changeYearNext = () => {
+    const goNext = document.querySelector(".year__arrow-down");
+    goNext.addEventListener("click", () => {
+      currentYear += 1;
+      parentYear.innerHTML = "";
+      displayCurrent();
+    });
+  };
+
+  displayCurrent();
+  changeYearBack();
+  changeYearNext();
 };
