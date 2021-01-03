@@ -1,10 +1,12 @@
 import { months, shortMonths } from "./monthsList";
 import { displayDate } from "../displayDate/displayDate";
+import { displayCurrentYear, displayYear } from "../displayYear/displayYear";
 
 export const displayMonth = (currentMonth, currentYear, date) => {
   const parentCurrent = document.querySelector(".month__current-name");
   const parentPrev = document.querySelector(".month__prev-name");
   const parentNext = document.querySelector(".month__next-name");
+  const parentYear = document.querySelector(".year__content");
 
   const switchBetweenMonths = (next, prev) => {
     parentNext.textContent = shortMonths[currentMonth - next];
@@ -32,13 +34,15 @@ export const displayMonth = (currentMonth, currentYear, date) => {
     goBack.addEventListener("click", () => {
       if (currentMonth < 1) {
         currentMonth += 11;
-        parentCurrent.textContent = months[currentMonth];
+        currentYear -= 1;
+        parentYear.innerHTML = displayCurrentYear(currentYear);
       } else {
         currentMonth -= 1;
-        parentCurrent.textContent = months[currentMonth];
       }
+
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
+      displayYear(currentYear, currentMonth, date);
     });
   };
 
@@ -46,18 +50,17 @@ export const displayMonth = (currentMonth, currentYear, date) => {
     const goNext = document.querySelector(".month__next");
 
     goNext.addEventListener("click", () => {
-      if (currentMonth < 0) {
-        currentMonth += 11;
-        parentCurrent.textContent = months[currentMonth];
-      } else if (currentMonth > 10) {
+      if (currentMonth > 10) {
         currentMonth -= 11;
+        currentYear += 1;
+        parentYear.innerHTML = displayCurrentYear(currentYear);
       } else {
         currentMonth += 1;
-        parentCurrent.textContent = months[currentMonth];
       }
 
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
+      displayYear(currentYear, currentMonth, date);
     });
   };
 
