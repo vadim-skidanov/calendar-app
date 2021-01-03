@@ -22,6 +22,10 @@ export const displayMonth = (currentMonth, currentYear, date) => {
     }
   };
 
+  const changeMonth = () => {
+    return new Date(`${currentMonth + 1}/${date.getDate()}/${currentYear}`);
+  };
+
   const changeMonthBack = () => {
     const goBack = document.querySelector(".month__prev");
 
@@ -34,6 +38,7 @@ export const displayMonth = (currentMonth, currentYear, date) => {
         parentCurrent.textContent = months[currentMonth];
       }
       displayCurrent();
+      displayDate(currentMonth, currentYear, changeMonth());
     });
   };
 
@@ -51,12 +56,8 @@ export const displayMonth = (currentMonth, currentYear, date) => {
         parentCurrent.textContent = months[currentMonth];
       }
 
-      const newDate = new Date(
-        `${currentMonth + 1}/${date.getDate()}/${currentYear}`
-      );
-
       displayCurrent();
-      displayDate(currentMonth, currentYear, newDate);
+      displayDate(currentMonth, currentYear, changeMonth());
     });
   };
 
