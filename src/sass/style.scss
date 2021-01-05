@@ -3,6 +3,7 @@
 $color-primary: #f64f59;
 $color-secondary: #c471ed;
 $color-white: #fff;
+$color-black: #000;
 
 @mixin year($value1, $value2) {
   opacity: $value1;
@@ -107,7 +108,7 @@ body {
 
         &:hover {
           transform: scale(1.5) translateY(-2px);
-          // box-shadow: 0 2rem 5rem rgba(#000, 0.1);
+          // box-shadow: 0 2rem 5rem rgba($color-black, 0.1);
           border-radius: 50px;
         }
         &-current {
@@ -138,18 +139,7 @@ body {
       }
 
       .close-popup {
-        position: absolute;
-        font-size: 2rem;
-        right: 0;
-        margin: 5px;
-        cursor: pointer;
-        opacity: 0.5;
-
-        &:hover {
-          font-size: 3rem;
-          opacity: 1;
-          transform: translateY(-4px);
-        }
+        @include close-popup;
       }
 
       .user {
@@ -184,74 +174,166 @@ body {
           padding-bottom: 1rem;
         }
       }
-      .icon {
-        position: absolute;
-        left: 10rem;
-        bottom: 0;
-        background: #fff;
-        cursor: pointer;
-        transform: translateX(-50%) translateY(-5px);
+
+      .add-event {
+        &__icon {
+          position: absolute;
+          left: 10rem;
+          bottom: 0;
+          background: #fff;
+          cursor: pointer;
+          transform: translateX(-50%) translateY(-5px);
+        }
 
         &__link,
         &__link:visited {
           color: inherit;
+          opacity: 0.8;
+        }
+
+        &__link:hover {
           opacity: 0.9;
         }
 
         &__link:active {
           opacity: 1;
+          transform: translateY(0);
         }
       }
     }
-  }
-}
-.years {
-  position: absolute;
-  top: 4rem;
-  right: 0;
-  transform: translateX(50%);
-  color: $color-primary;
-  width: 10rem;
-  height: 85%;
-  border-radius: 5px;
-  background: $color-white;
 
-  .year {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5rem;
-    font-weight: 700;
-    &__arrow-up,
-    &__arrow-down {
-      font-size: 2rem;
-    }
-
-    &__content {
-      height: 100%;
+    .new-event {
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba($color-black, 0.8);
+      z-index: 10;
       display: flex;
-      flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
-    }
-    @include calendar-years();
+      opacity: 0;
+      visibility: hidden;
+      backdrop-filter: blur(10px);
+      scale: (0.5);
+      transition: all 0.4s;
 
-    &__current {
-      font-size: 2.5rem;
-    }
-  }
+      &__content {
+        width: 40%;
+        height: 25%;
+        background: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+        color: $color-black;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+      }
 
-  .year > * > * {
-    cursor: default;
-  }
-  .year__arrow-up,
-  .year__arrow-down {
-    // .year > * > * {
-    transition: all 0.2s;
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.8);
+      &:target {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &__content {
+        opacity: 1;
+      }
+
+      &__close {
+        @include close-popup;
+      }
+
+      &__form {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .form {
+          &__group {
+            margin-bottom: 2rem;
+          }
+
+          &__time {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+          }
+
+          &__title {
+            width: 100%;
+            padding: 1rem 1.5rem;
+          }
+
+          &__time,
+          &__title {
+            border-color: $color-secondary;
+            color: $color-primary;
+            border-radius: 3px;
+            &:focus,
+            &:focus {
+              outline: none;
+            }
+          }
+
+          ::placeholder {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+
+    .years {
+      position: absolute;
+      top: 4rem;
+      right: 0;
+      transform: translateX(50%);
+      color: $color-primary;
+      width: 10rem;
+      height: 85%;
+      border-radius: 5px;
+      background: $color-white;
+
+      .year {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        font-weight: 700;
+        &__arrow-up,
+        &__arrow-down {
+          font-size: 2rem;
+        }
+
+        &__content {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+        }
+        @include calendar-years();
+
+        &__current {
+          font-size: 2.5rem;
+        }
+      }
+
+      .year > * > * {
+        cursor: default;
+      }
+      .year__arrow-up,
+      .year__arrow-down {
+        // .year > * > * {
+        transition: all 0.2s;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.8);
+        }
+      }
     }
   }
 }
