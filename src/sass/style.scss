@@ -170,7 +170,7 @@ body {
           padding-bottom: 1rem;
         }
 
-        &__objective {
+        &__title {
           padding-bottom: 1rem;
         }
       }
@@ -221,7 +221,7 @@ body {
 
       &__content {
         width: 40%;
-        height: 25%;
+        height: 30%;
         background: $color-white;
         box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
         color: $color-black;
@@ -229,6 +229,7 @@ body {
         position: relative;
         overflow: hidden;
         opacity: 0;
+        border: 2px solid $color-secondary;
       }
 
       &:target {
@@ -246,32 +247,36 @@ body {
 
       &__form {
         height: 100%;
-        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
 
         .form {
-          &__group {
-            margin-bottom: 2rem;
-          }
-
-          &__time {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 2rem;
-          }
-
-          &__title {
-            width: 100%;
-            padding: 1rem 1.5rem;
+          width: 60%;
+          &__group:not(:last-child) {
+            margin-bottom: 1rem;
           }
 
           &__time,
+          &__submit {
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem;
+          }
+
           &__title {
-            border-color: $color-secondary;
+            width: 100%;
+            padding: 1rem;
+          }
+
+          &__time,
+          &__title,
+          &__submit {
             color: $color-primary;
+            border-color: $color-secondary;
             border-radius: 3px;
+            background: $color-white;
+
             &:focus,
             &:focus {
               outline: none;
@@ -280,6 +285,7 @@ body {
 
           ::placeholder {
             color: $color-primary;
+            text-align: center;
           }
         }
       }
