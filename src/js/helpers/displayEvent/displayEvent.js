@@ -1,3 +1,5 @@
+import { events } from "../../components/events";
+
 export const displayEvent = () => {
   const dateParent = document.querySelectorAll(".date__day");
   const popupParent = document.querySelector(".event-popup");
@@ -6,6 +8,7 @@ export const displayEvent = () => {
   const monthOfEvent = document.querySelector(".month__current-name").id;
   const yearOfEvent = document.querySelector(".year__current").textContent;
   const eventContent = document.querySelector(".event");
+
   let dateOfEvent = "";
   for (let i = 0; i < dateParent.length; i++) {
     dateParent[i].addEventListener("click", () => {
@@ -18,8 +21,7 @@ export const displayEvent = () => {
         );
         let parentEvent = "";
         for (let event of filteredEvents) {
-          parentEvent += `<div class="event__time">${event.time}</div>
-            <div class="event__title">${event.title}</div>`;
+          parentEvent += events(event.time, event.title);
         }
         eventContent.innerHTML = parentEvent;
       }
