@@ -12,4 +12,4 @@ displayWeek();
 displayDate(currentMonth, currentYear, date);
 displayYear(currentYear, currentMonth, date);
 displayMonth(currentMonth, currentYear, date);
-displayEvent();
+displayEvent(currentMonth, currentYear);

@@ -23,6 +23,7 @@ export const displayMonth = (currentMonth, currentYear, date) => {
     } else {
       switchBetweenMonths(-1, 1);
     }
+    parentCurrent.id = currentMonth;
   };
 
   const changeMonth = () => {
@@ -40,11 +41,11 @@ export const displayMonth = (currentMonth, currentYear, date) => {
       } else {
         currentMonth -= 1;
       }
-
+      // console.log(changeMonth());
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
       displayYear(currentYear, currentMonth, date);
-      displayEvent();
+      displayEvent(currentMonth, currentYear);
     });
   };
 
@@ -63,7 +64,7 @@ export const displayMonth = (currentMonth, currentYear, date) => {
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
       displayYear(currentYear, currentMonth, date);
-      displayEvent();
+      displayEvent(currentMonth, currentYear);
     });
   };
 

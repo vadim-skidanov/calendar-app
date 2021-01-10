@@ -4,8 +4,14 @@ export const displayEvent = () => {
     const popupParent = document.querySelector(".event-popup");
     const popupClose = document.querySelector(".close-popup");
 
+    const monthOfEvent = document.querySelector(".month__current-name").id;
+    const yearOfEvent = document.querySelector(".year__current").textContent;
+
     for (let i = 0; i < dateParent.length; i++) {
       dateParent[i].addEventListener("click", () => {
+        const dateOfEvent = dateParent[i].textContent;
+        console.log(monthOfEvent, dateOfEvent, yearOfEvent);
+
         popupParent.classList.add("event-popup--active");
         popupClose.addEventListener("click", () => {
           popupParent.classList.remove("event-popup--active");

@@ -2,6 +2,7 @@ import { year } from "../../components/year";
 import { displayDate } from "../displayDate/displayDate";
 import { years } from "./yearList";
 import { displayEvent } from "../displayEvent/displayEvent";
+import { displayMonth } from "../displayMonth/displayMonth";
 
 export const displayCurrentYear = (currentYear) => {
   let parentYear = "";
@@ -24,7 +25,8 @@ export const displayYear = (currentYear, currentMonth, date) => {
       currentYear -= 1;
       parentYear.innerHTML = displayCurrentYear(currentYear);
       displayDate(currentMonth, currentYear, changeYear());
-      displayEvent();
+      displayMonth(currentMonth, currentYear, date);
+      displayEvent(currentMonth, currentYear);
     });
   };
 
@@ -34,7 +36,8 @@ export const displayYear = (currentYear, currentMonth, date) => {
       currentYear += 1;
       parentYear.innerHTML = displayCurrentYear(currentYear);
       displayDate(currentMonth, currentYear, changeYear());
-      displayEvent();
+      displayMonth(currentMonth, currentYear, date);
+      displayEvent(currentMonth, currentYear);
     });
   };
 
