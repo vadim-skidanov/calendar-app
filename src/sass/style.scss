@@ -43,13 +43,13 @@ body {
   margin: 7rem auto;
 
   .calendar {
-    min-height: 800px;
+    // min-height: 800px;
 
-    min-width: 60rem;
+    // min-width: 40rem;
     background: linear-gradient(to top, $color-primary, $color-secondary);
     margin-left: 11.5rem;
     margin-right: 7rem;
-    padding: 8rem 10rem 5rem 12rem;
+    padding: 8rem 10rem 3rem 12rem;
     color: $color-white;
     position: relative;
     border-radius: 7px;
@@ -58,13 +58,14 @@ body {
     .date {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
+      gap: 0.7rem;
       text-align: center;
       align-items: center;
     }
 
     .day-of-week {
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 5rem;
       cursor: default;
     }
 
@@ -74,14 +75,15 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 5rem 2rem;
+      margin: 2rem 2rem 7rem;
 
       &__prev,
       &__next {
         cursor: pointer;
+        transition: all 0.2s;
 
         &:hover {
-          transform: scale(1.1);
+          transform: scale(1.2);
         }
       }
 
@@ -100,7 +102,7 @@ body {
       grid-template-rows: repeat(6, 7rem);
 
       &__day {
-        font-size: 1.7rem;
+        font-size: 2rem;
         cursor: pointer;
         transition: all 0.2s;
 
@@ -108,7 +110,6 @@ body {
 
         &:hover {
           transform: scale(1.5) translateY(-2px);
-          // box-shadow: 0 2rem 5rem rgba($color-black, 0.1);
           border-radius: 50px;
         }
         &-current {
@@ -116,7 +117,7 @@ body {
           border: 1px #fff solid;
           border-radius: 50px;
           &:hover {
-            transform: scale(1.1) translateY(-2px);
+            transform: scale(1.2) translateY(-2px);
           }
         }
       }
@@ -138,9 +139,9 @@ body {
       //   display: block;
       // }
 
-      .close-popup {
-        @include close-popup;
-      }
+      // .close-popup {
+      //   @include close-popup;
+      // }
 
       .user {
         display: flex;
@@ -312,6 +313,12 @@ body {
         &__arrow-up,
         &__arrow-down {
           font-size: 2rem;
+          transition: all 0.2s;
+          margin: 2rem 0;
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.8);
+          }
         }
 
         &__content {
@@ -320,24 +327,12 @@ body {
           flex-direction: column;
           justify-content: space-around;
           align-items: center;
+          cursor: default;
         }
         @include calendar-years();
 
         &__current {
           font-size: 2.5rem;
-        }
-      }
-
-      .year > * > * {
-        cursor: default;
-      }
-      .year__arrow-up,
-      .year__arrow-down {
-        // .year > * > * {
-        transition: all 0.2s;
-        &:hover {
-          cursor: pointer;
-          transform: scale(1.8);
         }
       }
     }
