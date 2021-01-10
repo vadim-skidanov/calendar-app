@@ -41,7 +41,6 @@ export const displayMonth = (currentMonth, currentYear, date) => {
       } else {
         currentMonth -= 1;
       }
-      // console.log(changeMonth());
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
       displayYear(currentYear, currentMonth, date);

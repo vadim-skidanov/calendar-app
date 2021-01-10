@@ -132,11 +132,11 @@ body {
       color: $color-primary;
       background: $color-white;
       border-radius: 5px;
-      display: none;
+      // display: none;
 
-      &--active {
-        display: block;
-      }
+      // &--active {
+      //   display: block;
+      // }
 
       .close-popup {
         @include close-popup;
