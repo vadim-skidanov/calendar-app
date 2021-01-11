@@ -43,9 +43,6 @@ body {
   margin: 7rem auto;
 
   .calendar {
-    // min-height: 800px;
-
-    // min-width: 40rem;
     background: linear-gradient(to top, $color-primary, $color-secondary);
     margin-left: 11.5rem;
     margin-right: 7rem;
@@ -133,6 +130,8 @@ body {
       color: $color-primary;
       background: $color-white;
       border-radius: 5px;
+      cursor: default;
+
       // display: none;
 
       // &--active {
@@ -172,7 +171,7 @@ body {
         }
 
         &__title {
-          padding-bottom: 1rem;
+          padding-bottom: 2rem;
         }
       }
 
@@ -211,7 +210,7 @@ body {
       left: 0;
       background: rgba($color-black, 0.8);
       z-index: 10;
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       opacity: 0;
@@ -219,6 +218,10 @@ body {
       backdrop-filter: blur(10px);
       scale: (0.5);
       transition: all 0.4s;
+
+      &--active {
+        display: flex;
+      }
 
       &__content {
         width: 40%;

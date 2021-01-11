@@ -9,6 +9,12 @@ export const displayEvent = () => {
   const yearOfEvent = document.querySelector(".year__current").textContent;
   const eventContent = document.querySelector(".event");
 
+  const openNewEventPopup = document.querySelector(".add-event__link");
+  const newEventPopup = document.querySelector(".new-event");
+  openNewEventPopup.addEventListener("click", () => {
+    newEventPopup.classList.add("new-event--active");
+  });
+
   let dateOfEvent = "";
   for (let i = 0; i < dateParent.length; i++) {
     dateParent[i].addEventListener("click", () => {
@@ -48,13 +54,13 @@ export const displayEvent = () => {
             date: dateOfEvent,
           });
           localStorage.setItem("user", JSON.stringify(storage));
+          newEventPopup.classList.remove("new-event--active");
         } else {
           localStorage.setItem(
             "user",
             JSON.stringify([{ time: eTime, title: eTitle, date: dateOfEvent }])
           );
         }
-        location.reload();
       }
     });
   };
