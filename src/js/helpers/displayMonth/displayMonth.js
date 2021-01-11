@@ -1,6 +1,7 @@
 import { months, shortMonths } from "./monthsList";
 import { displayDate } from "../displayDate/displayDate";
 import { displayCurrentYear, displayYear } from "../displayYear/displayYear";
+import { displayEvent } from "../displayEvent/displayEvent";
 
 export const displayMonth = (currentMonth, currentYear, date) => {
   const parentCurrent = document.querySelector(".month__current-name");
@@ -22,6 +23,7 @@ export const displayMonth = (currentMonth, currentYear, date) => {
     } else {
       switchBetweenMonths(-1, 1);
     }
+    parentCurrent.id = currentMonth;
   };
 
   const changeMonth = () => {
@@ -39,10 +41,10 @@ export const displayMonth = (currentMonth, currentYear, date) => {
       } else {
         currentMonth -= 1;
       }
-
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
       displayYear(currentYear, currentMonth, date);
+      displayEvent(currentMonth, currentYear, date);
     });
   };
 
@@ -61,6 +63,7 @@ export const displayMonth = (currentMonth, currentYear, date) => {
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
       displayYear(currentYear, currentMonth, date);
+      displayEvent(currentMonth, currentYear, date);
     });
   };
 

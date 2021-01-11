@@ -1,6 +1,8 @@
 import { year } from "../../components/year";
 import { displayDate } from "../displayDate/displayDate";
 import { years } from "./yearList";
+import { displayEvent } from "../displayEvent/displayEvent";
+import { displayMonth } from "../displayMonth/displayMonth";
 
 export const displayCurrentYear = (currentYear) => {
   let parentYear = "";
@@ -17,25 +19,19 @@ export const displayYear = (currentYear, currentMonth, date) => {
     return new Date(`${currentMonth + 1}/${date.getDate()}/${currentYear}`);
   };
 
-  const changeYearBack = () => {
-    const goBack = document.querySelector(".year__arrow-up");
-    goBack.addEventListener("click", () => {
-      currentYear -= 1;
+  const amendYear = (arrow, num) => {
+    const change = document.querySelector(".year__arrow-" + arrow);
+    change.addEventListener("click", () => {
+      currentYear -= num;
       parentYear.innerHTML = displayCurrentYear(currentYear);
       displayDate(currentMonth, currentYear, changeYear());
+      displayMonth(currentMonth, currentYear, date);
+      displayEvent(currentMonth, currentYear, date);
     });
   };
 
-  const changeYearNext = () => {
-    const goNext = document.querySelector(".year__arrow-down");
-    goNext.addEventListener("click", () => {
-      currentYear += 1;
-      parentYear.innerHTML = displayCurrentYear(currentYear);
-      displayDate(currentMonth, currentYear, changeYear());
-    });
-  };
+  amendYear("back", 1);
+  amendYear("next", -1);
 
   parentYear.innerHTML = displayCurrentYear(currentYear);
-  changeYearBack();
-  changeYearNext();
 };

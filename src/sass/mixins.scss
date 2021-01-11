@@ -34,3 +34,21 @@
     }
   }
 }
+
+@mixin close-popup {
+  position: absolute;
+  font-size: 2rem;
+  right: 0;
+  margin: 5px;
+  cursor: pointer;
+  opacity: 0.5;
+  color: $color-primary;
+  text-decoration: none;
+  transition: all 0.2s;
+
+  &:hover {
+    font-size: 3rem;
+    opacity: 1;
+    line-height: 1;
+  }
+}

@@ -11,7 +11,7 @@
     <title>Calendar - Grid</title>
   </head>
   <body>
-    <section id="calendar">
+
       <div class="container">
         <div class="calendar">
           <div class="month text-small">
@@ -33,39 +33,69 @@
           </div>
 
           <div class="event-popup">
-            <div class="close-popup">&times;</div>
             <div class="user">
               <img src="img/my_img.jpg" alt="" class="user__img" />
               <h2 class="user__name text-medium">vadim s.</h2>
               <div class="user__role">web developer</div>
             </div>
+            <div class="event__date"></div>
             <div class="event text-medium">
-              <div class="event__time">9:00AM</div>
-              <div class="event__objective">Meeting with Ralph</div>
-              <div class="event__time">1:00PM</div>
-              <div class="event__objective">Brunch with Kim</div>
-              <div class="event__time">3:00PM</div>
-              <div class="event__objective">Grab groceries</div>
+              
+              <!-- Events -->
             </div>
-            <div class="icon">
-              <a href="#" class="icon__link"
-                ><i class="fas fa-plus-circle fa-4x"></i
-              ></a>
+            <div class="add-event">
+              <div class="add-event__icon">
+                <a href="#" class="add-event__link"
+                  ><i class="fas fa-plus-circle fa-4x"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="new-event">
+            <div class="new-event__content">
+              <a href="#" class="new-event__close">&times;</a>
+              <div class="new-event__form">
+                <form action="#" class="form">
+                  <div class="form__group">
+                    <input
+                      type="time"
+                      id="time"
+                      value="08:00"
+                      class="form__time"
+                    />
+                  </div>
+                  <div class="form__group">
+                    <input
+                      type="text"
+                      id="title"
+                      class="form__title"
+                      maxlength="25"
+                      placeholder="Title"
+                    />
+                  </div>
+                  <div class="form__group">
+                    <button
+                      type="button"
+                      id="btnInsert"
+                      class="form__submit"
+                    >Add</button>
+                </form>
+              </div>
             </div>
           </div>
 
           <div class="years">
             <div class="year">
-              <div class="year__arrow-up">&uarr;</div>
+              <div class="year__arrow-back">&uarr;</div>
               <div class="year__content">
                 <!-- Years -->
               </div>
-              <div class="year__arrow-down">&darr;</div>
+              <div class="year__arrow-next">&darr;</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
     <script src="./js/script.js"></script>
   </body>
