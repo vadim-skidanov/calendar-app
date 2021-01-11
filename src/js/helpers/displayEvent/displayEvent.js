@@ -1,6 +1,6 @@
 import { events } from "../../components/events";
 
-export const displayEvent = () => {
+export const displayEvent = (currentMonth, currentYear, date) => {
   const dateParent = document.querySelectorAll(".date__day");
   const popupParent = document.querySelector(".event-popup");
 
@@ -9,6 +9,26 @@ export const displayEvent = () => {
   const eventContent = document.querySelector(".event");
 
   const newEventPopup = document.querySelector(".new-event");
+
+  const currentDate = `${currentMonth}/${date.getDate()}/${currentYear}`;
+
+  const eventDate = document.querySelector(".event__date");
+  let dateOfEvent = "";
+
+  const showEvents = (date) => {
+    const savedEvents = JSON.parse(localStorage.getItem("user"));
+    if (savedEvents !== null) {
+      const filteredEvents = savedEvents.filter((n) => n.date === date);
+      let parentEvent = "";
+      for (let event of filteredEvents) {
+        parentEvent += events(event.time, event.title);
+      }
+      eventContent.innerHTML = parentEvent;
+    }
+  };
+
+  showEvents(currentDate);
+  eventDate.textContent = currentDate;
 
   const openCloseNewEventsPopup = () => {
     const openNewEventPopup = document.querySelector(".add-event__link");
@@ -22,22 +42,12 @@ export const displayEvent = () => {
     });
   };
 
-  let dateOfEvent = "";
   for (let i = 0; i < dateParent.length; i++) {
     dateParent[i].addEventListener("click", () => {
       dateOfEvent = `${monthOfEvent}/${dateParent[i].textContent}/${yearOfEvent}`;
+      eventDate.textContent = dateOfEvent;
       popupParent.classList.add("event-popup--active");
-      const savedEvents = JSON.parse(localStorage.getItem("user"));
-      if (savedEvents !== null) {
-        const filteredEvents = savedEvents.filter(
-          (n) => n.date === dateOfEvent
-        );
-        let parentEvent = "";
-        for (let event of filteredEvents) {
-          parentEvent += events(event.time, event.title);
-        }
-        eventContent.innerHTML = parentEvent;
-      }
+      showEvents(dateOfEvent);
     });
   }
 

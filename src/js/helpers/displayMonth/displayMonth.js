@@ -44,7 +44,7 @@ export const displayMonth = (currentMonth, currentYear, date) => {
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
       displayYear(currentYear, currentMonth, date);
-      displayEvent(currentMonth, currentYear);
+      displayEvent(currentMonth, currentYear, date);
     });
   };
 
@@ -63,7 +63,7 @@ export const displayMonth = (currentMonth, currentYear, date) => {
       displayCurrent();
       displayDate(currentMonth, currentYear, changeMonth());
       displayYear(currentYear, currentMonth, date);
-      displayEvent(currentMonth, currentYear);
+      displayEvent(currentMonth, currentYear, date);
     });
   };
 

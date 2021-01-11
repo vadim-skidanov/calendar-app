@@ -165,6 +165,10 @@ body {
 
       .event {
         margin: 3rem 2rem;
+        &__date {
+          text-align: center;
+          margin: 1rem;
+        }
         &__time {
           color: $color-secondary;
           padding-bottom: 1rem;
@@ -314,8 +318,8 @@ body {
         text-align: center;
         padding: 1.5rem;
         font-weight: 700;
-        &__arrow-up,
-        &__arrow-down {
+        &__arrow-back,
+        &__arrow-next {
           font-size: 2rem;
           transition: all 0.2s;
           margin: 2rem 0;

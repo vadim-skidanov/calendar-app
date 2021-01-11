@@ -26,12 +26,12 @@ export const displayYear = (currentYear, currentMonth, date) => {
       parentYear.innerHTML = displayCurrentYear(currentYear);
       displayDate(currentMonth, currentYear, changeYear());
       displayMonth(currentMonth, currentYear, date);
-      displayEvent(currentMonth, currentYear);
+      displayEvent(currentMonth, currentYear, date);
     });
   };
 
-  amendYear("up", 1);
-  amendYear("down", -1);
+  amendYear("back", 1);
+  amendYear("next", -1);
 
   parentYear.innerHTML = displayCurrentYear(currentYear);
 };
