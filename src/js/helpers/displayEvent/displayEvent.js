@@ -13,6 +13,7 @@ export const displayEvent = (currentMonth, currentYear, date) => {
   const currentDate = `${currentMonth}/${date.getDate()}/${currentYear}`;
 
   const eventDate = document.querySelector(".event__date");
+  // const highlightEventDate = document.querySelector()
   let dateOfEvent = "";
 
   const showEvents = (date) => {

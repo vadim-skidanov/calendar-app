@@ -131,17 +131,12 @@ body {
       background: $color-white;
       border-radius: 5px;
       cursor: default;
+      overflow: scroll;
 
-      // display: none;
-
-      // &--active {
-      //   display: block;
-      // }
-
-      // .close-popup {
-      //   @include close-popup;
-      // }
-
+      &__content {
+        height: 46rem;
+        overflow: scroll;
+      }
       .user {
         display: flex;
         flex-direction: column;
