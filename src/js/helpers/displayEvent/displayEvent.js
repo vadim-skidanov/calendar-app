@@ -3,17 +3,24 @@ import { events } from "../../components/events";
 export const displayEvent = () => {
   const dateParent = document.querySelectorAll(".date__day");
   const popupParent = document.querySelector(".event-popup");
-  // const popupClose = document.querySelector(".close-popup");
 
   const monthOfEvent = document.querySelector(".month__current-name").id;
   const yearOfEvent = document.querySelector(".year__current").textContent;
   const eventContent = document.querySelector(".event");
 
-  const openNewEventPopup = document.querySelector(".add-event__link");
   const newEventPopup = document.querySelector(".new-event");
-  openNewEventPopup.addEventListener("click", () => {
-    newEventPopup.classList.add("new-event--active");
-  });
+
+  const openCloseNewEventsPopup = () => {
+    const openNewEventPopup = document.querySelector(".add-event__link");
+    const closeNewEventPopup = document.querySelector(".new-event__close");
+    openNewEventPopup.addEventListener("click", () => {
+      newEventPopup.classList.add("new-event--active");
+    });
+
+    closeNewEventPopup.addEventListener("click", () => {
+      newEventPopup.classList.remove("new-event--active");
+    });
+  };
 
   let dateOfEvent = "";
   for (let i = 0; i < dateParent.length; i++) {
@@ -31,9 +38,6 @@ export const displayEvent = () => {
         }
         eventContent.innerHTML = parentEvent;
       }
-      // popupClose.addEventListener("click", () => {
-      //   popupParent.classList.remove("event-popup--active");
-      // });
     });
   }
 
@@ -64,6 +68,6 @@ export const displayEvent = () => {
       }
     });
   };
-
+  openCloseNewEventsPopup();
   addAndDisplayEvents();
 };
