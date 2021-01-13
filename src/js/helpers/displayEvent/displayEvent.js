@@ -45,7 +45,7 @@ export const displayEvent = (currentMonth, currentYear, date) => {
   for (let i = 0; i < dateParent.length; i++) {
     const monthOfEventFromOne = parseInt(monthOfEvent) + 1;
     const classDate = `${monthOfEventFromOne}/${dateParent[i].textContent}/${yearOfEvent}`;
-    dateParent[i].classList.add(classDate);
+    dateParent[i].id = classDate;
 
     dateParent[i].addEventListener("click", () => {
       dateOfEvent = `${monthOfEventFromOne}/${dateParent[i].textContent}/${yearOfEvent}`;
@@ -57,15 +57,15 @@ export const displayEvent = (currentMonth, currentYear, date) => {
 
   //////////////////////////// !
   const highlightDate = () => {
-    if (storedEvents) {
-      for (let event of storedEvents) {
-        for (let i = 0; i < dateParent.length; i++) {
-          if (dateParent[i].classList.contains(event.date)) {
-            const eventParent = document.getElementsByClassName(event.date);
-            for (let e of eventParent) {
-              e.classList.add("date__day--event");
-            }
-          }
+    for (let event of storedEvents) {
+      for (let i = 0; i < dateParent.length; i++) {
+        const dayDate = `${currentMonth + 1}/${
+          dateParent[i].innerHTML
+        }/${currentYear}`;
+
+        if (dayDate === event.date) {
+          const eventParent = document.getElementById(event.date);
+          eventParent.classList.add("date__day--event");
         }
       }
     }
@@ -103,5 +103,5 @@ export const displayEvent = (currentMonth, currentYear, date) => {
   };
   openCloseNewEventsPopup();
   addAndDisplayEvents();
-  highlightDate();
+  if (storedEvents) highlightDate();
 };
