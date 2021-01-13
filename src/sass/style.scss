@@ -1,14 +1,9 @@
-@import "./mixins.scss";
+@import "./mixins/mixins";
 
 $color-primary: #f64f59;
 $color-secondary: #c471ed;
 $color-white: #fff;
 $color-black: #000;
-
-@mixin year($value1, $value2) {
-  opacity: $value1;
-  font-size: $value2;
-}
 
 .text-small {
   font-size: 1.4rem;
@@ -16,6 +11,9 @@ $color-black: #000;
 
 .text-medium {
   font-size: 1.7rem;
+  @include respond(phone) {
+    font-size: 1rem;
+  }
 }
 
 *,
@@ -29,6 +27,14 @@ $color-black: #000;
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 50%;
+  }
+
+  @include respond(phone) {
+    font-size: 35%;
+  }
 }
 
 body {
@@ -41,6 +47,15 @@ body {
   width: 110rem;
   margin: 7rem auto;
 
+  @include respond(tab-port) {
+    width: 90rem;
+    margin: 1.5rem auto;
+
+    @include respond(phone) {
+      width: 70rem;
+    }
+  }
+
   .calendar {
     background: linear-gradient(to top, $color-primary, $color-secondary);
     margin-left: 11.5rem;
@@ -50,6 +65,14 @@ body {
     position: relative;
     border-radius: 7px;
 
+    @include respond(tab-port) {
+      padding: 2rem 8rem 0 11rem;
+    }
+
+    @include respond(phone) {
+      padding: 2rem 6rem 0 6rem;
+    }
+
     .day-of-week,
     .date {
       display: grid;
@@ -57,12 +80,23 @@ body {
       gap: 0.7rem;
       text-align: center;
       align-items: center;
+      @include respond(tab-port) {
+        gap: 0;
+      }
     }
 
     .day-of-week {
       text-transform: uppercase;
       margin-bottom: 5rem;
       cursor: default;
+
+      @include respond(tab-port) {
+        margin-bottom: 4rem;
+      }
+
+      @include respond(phone) {
+        margin-bottom: 1rem;
+      }
     }
 
     .month {
@@ -72,6 +106,14 @@ body {
       justify-content: space-between;
       align-items: center;
       margin: 2rem 2rem 7rem;
+
+      @include respond(tab-port) {
+        margin: 2rem 1rem 4rem;
+      }
+
+      @include respond(phone) {
+        margin: 0 1rem 1rem;
+      }
 
       &__prev,
       &__next {
@@ -87,6 +129,10 @@ body {
         font-size: 5rem;
         font-weight: 600;
         cursor: default;
+
+        @include respond(phone) {
+          font-size: 3rem;
+        }
       }
 
       &__next {
@@ -96,6 +142,10 @@ body {
 
     .date {
       grid-template-rows: repeat(6, 7rem);
+
+      @include respond(phone) {
+        grid-template-rows: repeat(6, 5rem);
+      }
 
       &__day {
         font-size: 2rem;
@@ -135,6 +185,14 @@ body {
       border-radius: 5px;
       cursor: default;
 
+      @include respond(tab-port) {
+        width: 16rem;
+      }
+
+      @include respond(phone) {
+        width: 10rem;
+      }
+
       &__content {
         height: 46rem;
         overflow: scroll;
@@ -145,6 +203,11 @@ body {
         margin-top: 8rem;
         align-items: center;
         text-transform: uppercase;
+
+        @include respond(phone) {
+          margin-top: 4.5rem;
+        }
+
         &__img {
           width: 8rem;
           border-radius: 50%;
@@ -154,6 +217,11 @@ body {
           left: 50%;
           transform: translateX(-50%);
           z-index: 10;
+
+          @include respond(phone) {
+            width: 6rem;
+            border: 1px $color-secondary solid;
+          }
         }
 
         &__role {
@@ -163,6 +231,11 @@ body {
 
       .event {
         margin: 3rem 2rem;
+
+        @include respond(tab-port) {
+          margin: 1rem 2rem;
+        }
+
         &__date {
           text-align: center;
           margin: 1rem;
@@ -185,6 +258,14 @@ body {
           background: #fff;
           cursor: pointer;
           transform: translateX(-50%) translateY(-5px);
+
+          @include respond(tab-port) {
+            left: 8rem;
+          }
+
+          @include respond(phone) {
+            left: 5rem;
+          }
         }
 
         &__link,
@@ -309,6 +390,10 @@ body {
       border-radius: 5px;
       background: $color-white;
 
+      @include respond(phone) {
+        width: 7.5rem;
+      }
+
       .year {
         height: 100%;
         display: flex;
@@ -321,6 +406,11 @@ body {
           font-size: 2rem;
           transition: all 0.2s;
           margin: 2rem 0;
+
+          @include respond(phone) {
+            margin: 0;
+          }
+
           &:hover {
             cursor: pointer;
             transform: scale(1.8);
