@@ -33,7 +33,6 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-
   background: linear-gradient(to right, $color-secondary, $color-primary);
   background-attachment: fixed;
 }
@@ -102,6 +101,10 @@ body {
         font-size: 2rem;
         cursor: pointer;
         transition: all 0.2s;
+
+        &--event {
+          color: #9d0191;
+        }
 
         @include start-dates;
 

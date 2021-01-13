@@ -13,18 +13,14 @@ export const displayEvent = (currentMonth, currentYear, date) => {
   const currentDate = `${currentMonth + 1}/${date.getDate()}/${currentYear}`;
   const eventDate = document.querySelector(".event__date");
 
-  // const eventDay = document.querySelector('.date')
-  // const highlightEventDate = `${event__date}`
   let dateOfEvent = "";
+  const storedEvents = JSON.parse(localStorage.getItem("user"));
 
   const showEvents = (date) => {
-    const savedEvents = JSON.parse(localStorage.getItem("user"));
-    if (savedEvents !== null) {
-      const filteredEvents = savedEvents.filter((n) => n.date === date);
+    if (storedEvents !== null) {
+      const filteredEvents = storedEvents.filter((n) => n.date === date);
       let parentEvent = "";
       for (let event of filteredEvents) {
-        // console.log(event.date[0] + 1);
-        // console.log(event.date);
         parentEvent += events(event.time, event.title);
       }
       eventContent.innerHTML = parentEvent;
@@ -47,14 +43,35 @@ export const displayEvent = (currentMonth, currentYear, date) => {
   };
 
   for (let i = 0; i < dateParent.length; i++) {
+    const monthOfEventFromOne = parseInt(monthOfEvent) + 1;
+    const classDate = `${monthOfEventFromOne}/${dateParent[i].textContent}/${yearOfEvent}`;
+    dateParent[i].classList.add(classDate);
+
     dateParent[i].addEventListener("click", () => {
-      const monthOfEventFromOne = parseInt(monthOfEvent) + 1;
       dateOfEvent = `${monthOfEventFromOne}/${dateParent[i].textContent}/${yearOfEvent}`;
       eventDate.textContent = dateOfEvent;
       popupParent.classList.add("event-popup--active");
       showEvents(dateOfEvent);
     });
   }
+
+  //////////////////////////// !
+  const highlightDate = () => {
+    if (storedEvents) {
+      for (let event of storedEvents) {
+        for (let i = 0; i < dateParent.length; i++) {
+          if (dateParent[i].classList.contains(event.date)) {
+            const eventParent = document.getElementsByClassName(event.date);
+            for (let e of eventParent) {
+              e.classList.add("date__day--event");
+            }
+          }
+        }
+      }
+    }
+  };
+
+  //////////////////////////// !
 
   const addAndDisplayEvents = () => {
     const eventTime = document.querySelector("#time");
@@ -86,4 +103,5 @@ export const displayEvent = (currentMonth, currentYear, date) => {
   };
   openCloseNewEventsPopup();
   addAndDisplayEvents();
+  highlightDate();
 };
