@@ -54,8 +54,18 @@
 }
 
 @mixin respond($breakpoint) {
-  @if $breakpoint == phone {
-    @media only screen and (max-width: 37.5em) {
+  @if $breakpoint == phone-small {
+    @media only screen and (max-width: 25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-port {
+    @media only screen and (max-width: 39.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-land {
+    @media only screen and (max-width: 46em) {
       @content;
     }
   }

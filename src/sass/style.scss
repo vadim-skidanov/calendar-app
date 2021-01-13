@@ -11,7 +11,8 @@ $color-black: #000;
 
 .text-medium {
   font-size: 1.7rem;
-  @include respond(phone) {
+
+  @include respond(phone-land) {
     font-size: 1rem;
   }
 }
@@ -32,7 +33,7 @@ html {
     font-size: 50%;
   }
 
-  @include respond(phone) {
+  @include respond(phone-port) {
     font-size: 35%;
   }
 }
@@ -47,13 +48,25 @@ body {
   width: 110rem;
   margin: 7rem auto;
 
+  @include respond(tab-land) {
+    margin-top: 1.5rem;
+    width: 105rem;
+  }
+
   @include respond(tab-port) {
     width: 90rem;
-    margin: 1.5rem auto;
+  }
 
-    @include respond(phone) {
-      width: 70rem;
-    }
+  @include respond(phone-land) {
+    width: 80rem;
+  }
+
+  @include respond(phone-port) {
+    width: 70rem;
+  }
+
+  @include respond(phone-port) {
+    width: 66rem;
   }
 
   .calendar {
@@ -65,12 +78,26 @@ body {
     position: relative;
     border-radius: 7px;
 
-    @include respond(tab-port) {
+    @include respond(tab-land) {
       padding: 2rem 8rem 0 11rem;
+      margin-left: 3rem;
+      margin-right: 0;
     }
 
-    @include respond(phone) {
+    @include respond(tab-port) {
+      padding: 2rem 8rem 0 11rem;
+      margin-left: 6rem;
+      margin-right: 5rem;
+    }
+
+    @include respond(phone-land) {
       padding: 2rem 6rem 0 6rem;
+      margin-left: 8.5rem;
+      margin-right: 5.5rem;
+    }
+
+    @include respond(phone-port) {
+      margin-right: 4rem;
     }
 
     .day-of-week,
@@ -94,7 +121,7 @@ body {
         margin-bottom: 4rem;
       }
 
-      @include respond(phone) {
+      @include respond(phone-port) {
         margin-bottom: 1rem;
       }
     }
@@ -111,7 +138,7 @@ body {
         margin: 2rem 1rem 4rem;
       }
 
-      @include respond(phone) {
+      @include respond(phone-port) {
         margin: 0 1rem 1rem;
       }
 
@@ -130,7 +157,7 @@ body {
         font-weight: 600;
         cursor: default;
 
-        @include respond(phone) {
+        @include respond(phone-land) {
           font-size: 3rem;
         }
       }
@@ -143,7 +170,7 @@ body {
     .date {
       grid-template-rows: repeat(6, 7rem);
 
-      @include respond(phone) {
+      @include respond(phone-port) {
         grid-template-rows: repeat(6, 5rem);
       }
 
@@ -162,6 +189,7 @@ body {
           transform: scale(1.5) translateY(-2px);
           border-radius: 50px;
         }
+
         &-current {
           font-size: 2.7rem;
           border: 1px #fff solid;
@@ -189,7 +217,11 @@ body {
         width: 16rem;
       }
 
-      @include respond(phone) {
+      @include respond(phone-land) {
+        width: 13rem;
+      }
+
+      @include respond(phone-port) {
         width: 10rem;
       }
 
@@ -204,7 +236,11 @@ body {
         align-items: center;
         text-transform: uppercase;
 
-        @include respond(phone) {
+        @include respond(phone-land) {
+          margin-top: 6rem;
+        }
+
+        @include respond(phone-port) {
           margin-top: 4.5rem;
         }
 
@@ -218,7 +254,12 @@ body {
           transform: translateX(-50%);
           z-index: 10;
 
-          @include respond(phone) {
+          @include respond(phone-land) {
+            width: 7rem;
+            border: 1px $color-secondary solid;
+          }
+
+          @include respond(phone-port) {
             width: 6rem;
             border: 1px $color-secondary solid;
           }
@@ -263,7 +304,11 @@ body {
             left: 8rem;
           }
 
-          @include respond(phone) {
+          @include respond(phone-land) {
+            left: 6.6rem;
+          }
+
+          @include respond(phone-port) {
             left: 5rem;
           }
         }
@@ -390,7 +435,7 @@ body {
       border-radius: 5px;
       background: $color-white;
 
-      @include respond(phone) {
+      @include respond(phone-land) {
         width: 7.5rem;
       }
 
@@ -407,7 +452,7 @@ body {
           transition: all 0.2s;
           margin: 2rem 0;
 
-          @include respond(phone) {
+          @include respond(phone-port) {
             margin: 0;
           }
 
