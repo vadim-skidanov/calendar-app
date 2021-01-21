@@ -82,14 +82,13 @@ export const displayEvent = (currentMonth, currentYear, date) => {
       const eTime = eventTime.value;
       const eTitle = eventTitle.value;
       if (eTime && eTitle) {
-        const storage = JSON.parse(localStorage.getItem("user"));
-        if (storage !== null && storage.length > 0) {
-          storage.push({
+        if (storedEvents !== null && storedEvents.length > 0) {
+          storedEvents.push({
             time: eTime,
             title: eTitle,
             date: dateOfEvent,
           });
-          localStorage.setItem("user", JSON.stringify(storage));
+          localStorage.setItem("user", JSON.stringify(storedEvents));
           newEventPopup.classList.remove("new-event--active");
         } else {
           localStorage.setItem(
