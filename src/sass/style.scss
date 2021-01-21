@@ -50,23 +50,20 @@ body {
 
   @include respond(tab-land) {
     margin-top: 1.5rem;
-    width: 105rem;
   }
 
   @include respond(tab-port) {
-    width: 90rem;
-  }
-
-  @include respond(phone-land) {
     width: 80rem;
   }
 
-  @include respond(phone-port) {
-    width: 70rem;
+  @include respond(phone-land) {
+    width: 100%;
+    margin: 0;
   }
 
   @include respond(phone-port) {
-    width: 66rem;
+    width: 100%;
+    margin-top: 4rem;
   }
 
   .calendar {
@@ -78,26 +75,21 @@ body {
     position: relative;
     border-radius: 7px;
 
-    @include respond(tab-land) {
-      padding: 2rem 8rem 0 11rem;
-      margin-left: 3rem;
-      margin-right: 0;
-    }
-
     @include respond(tab-port) {
-      padding: 2rem 8rem 0 11rem;
-      margin-left: 6rem;
-      margin-right: 5rem;
+      padding: 2rem 7rem 0 10rem;
+      margin-left: 8rem;
+      margin-right: 4rem;
     }
 
     @include respond(phone-land) {
-      padding: 2rem 6rem 0 6rem;
+      padding: 1rem 6rem 0 6rem;
       margin-left: 8.5rem;
       margin-right: 5.5rem;
     }
 
     @include respond(phone-port) {
-      margin-right: 4rem;
+      margin: 0;
+      padding: 1rem 1rem;
     }
 
     .day-of-week,
@@ -117,11 +109,7 @@ body {
       margin-bottom: 5rem;
       cursor: default;
 
-      @include respond(tab-port) {
-        margin-bottom: 4rem;
-      }
-
-      @include respond(phone-port) {
+      @include respond(phone-land) {
         margin-bottom: 1rem;
       }
     }
@@ -134,12 +122,12 @@ body {
       align-items: center;
       margin: 2rem 2rem 7rem;
 
-      @include respond(tab-port) {
-        margin: 2rem 1rem 4rem;
+      @include respond(phone-land) {
+        margin: 2rem 1.5rem 2rem;
       }
 
       @include respond(phone-port) {
-        margin: 0 1rem 1rem;
+        margin: 2rem 2rem 2rem;
       }
 
       &__prev,
@@ -156,10 +144,6 @@ body {
         font-size: 5rem;
         font-weight: 600;
         cursor: default;
-
-        @include respond(phone-land) {
-          font-size: 3rem;
-        }
       }
 
       &__next {
@@ -169,10 +153,6 @@ body {
 
     .date {
       grid-template-rows: repeat(6, 7rem);
-
-      @include respond(phone-port) {
-        grid-template-rows: repeat(6, 5rem);
-      }
 
       &__day {
         font-size: 2rem;
@@ -222,7 +202,7 @@ body {
       }
 
       @include respond(phone-port) {
-        width: 10rem;
+        display: none;
       }
 
       &__content {
@@ -236,14 +216,6 @@ body {
         align-items: center;
         text-transform: uppercase;
 
-        @include respond(phone-land) {
-          margin-top: 6rem;
-        }
-
-        @include respond(phone-port) {
-          margin-top: 4.5rem;
-        }
-
         &__img {
           width: 8rem;
           border-radius: 50%;
@@ -253,16 +225,6 @@ body {
           left: 50%;
           transform: translateX(-50%);
           z-index: 10;
-
-          @include respond(phone-land) {
-            width: 7rem;
-            border: 1px $color-secondary solid;
-          }
-
-          @include respond(phone-port) {
-            width: 6rem;
-            border: 1px $color-secondary solid;
-          }
         }
 
         &__role {
@@ -272,10 +234,6 @@ body {
 
       .event {
         margin: 3rem 2rem;
-
-        @include respond(tab-port) {
-          margin: 1rem 2rem;
-        }
 
         &__date {
           text-align: center;
@@ -306,10 +264,6 @@ body {
 
           @include respond(phone-land) {
             left: 6.6rem;
-          }
-
-          @include respond(phone-port) {
-            left: 5rem;
           }
         }
 
@@ -435,8 +389,20 @@ body {
       border-radius: 5px;
       background: $color-white;
 
+      @include respond(tab-port) {
+        width: 8.5rem;
+      }
+
       @include respond(phone-land) {
         width: 7.5rem;
+      }
+
+      @include respond(phone-port) {
+        top: 0;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 5rem;
       }
 
       .year {
@@ -446,19 +412,28 @@ body {
         text-align: center;
         padding: 1.5rem;
         font-weight: 700;
+
+        @include respond(phone-port) {
+          flex-direction: row;
+        }
+
         &__arrow-back,
         &__arrow-next {
           font-size: 2rem;
           transition: all 0.2s;
           margin: 2rem 0;
 
-          @include respond(phone-port) {
-            margin: 0;
-          }
-
           &:hover {
             cursor: pointer;
             transform: scale(1.8);
+          }
+        }
+
+        @include respond(phone-port) {
+          .year__arrow-back,
+          .year__arrow-next {
+            transform: rotate(-90deg);
+            margin: 0;
           }
         }
 
@@ -469,7 +444,14 @@ body {
           justify-content: space-around;
           align-items: center;
           cursor: default;
+
+          @include respond(phone-port) {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+          }
         }
+
         @include calendar-years();
 
         &__current {
