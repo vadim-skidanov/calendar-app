@@ -37,7 +37,7 @@
 
 @mixin close-popup {
   position: absolute;
-  font-size: 2rem;
+  font-size: 3rem;
   right: 0;
   margin: 5px;
   cursor: pointer;
@@ -46,10 +46,17 @@
   text-decoration: none;
   transition: all 0.2s;
 
+  @include respond(phone-port) {
+    font-size: 5rem;
+  }
+
   &:hover {
-    font-size: 3rem;
+    font-size: 4rem;
     opacity: 1;
     line-height: 1;
+    @include respond(phone-port) {
+      font-size: 6rem;
+    }
   }
 }
 
