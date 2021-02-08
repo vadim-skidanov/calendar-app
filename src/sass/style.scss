@@ -121,10 +121,6 @@ body {
         margin: 2rem 1.5rem 2rem;
       }
 
-      @include respond(phone-port) {
-        margin: 2rem 0.5rem 2rem;
-      }
-
       &__prev,
       &__next {
         cursor: pointer;
@@ -262,6 +258,7 @@ body {
 
           @include respond(phone-port) {
             text-align: start;
+            font-size: 2rem;
           }
         }
         &__time {
@@ -354,6 +351,7 @@ body {
         overflow: hidden;
         opacity: 0;
         border: 2px solid $color-secondary;
+
         @include respond(phone-port) {
           width: 70%;
           height: 50%;
