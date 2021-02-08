@@ -199,14 +199,21 @@ body {
       @include respond(phone-port) {
         bottom: 20rem;
         transform: translateX(0);
-        height: 10rem;
+        height: 14rem;
         top: 48rem;
         width: 100%;
+        padding-bottom: 1rem;
       }
 
       &__content {
-        height: 46rem;
+        height: 60%;
         overflow: scroll;
+        @include respond(phone-port) {
+          top: 0;
+          height: 100%;
+          text-align: center;
+          margin-top: -3rem;
+        }
       }
 
       .user {
@@ -215,6 +222,10 @@ body {
         margin-top: 8rem;
         align-items: center;
         text-transform: uppercase;
+
+        @include respond(phone-port) {
+          display: none;
+        }
 
         &__img {
           width: 8rem;
@@ -225,27 +236,33 @@ body {
           left: 50%;
           transform: translateX(-50%);
           z-index: 10;
-
-          @include respond(phone-port) {
-            transform: translateX(0);
-            left: 1rem;
-            top: 0;
-            width: 6.5rem;
-            border: 3px $color-secondary solid;
-          }
         }
 
         &__role {
           opacity: 0.5;
+          @include respond(phone-port) {
+            display: none;
+          }
         }
       }
 
       .event {
         margin: 3rem 2rem;
+        @include respond(phone-port) {
+          display: flex;
+          font-size: 2rem;
+          @include respond(phone-port) {
+            margin-top: 2.2rem;
+          }
+        }
 
         &__date {
           text-align: center;
           margin: 1rem;
+
+          @include respond(phone-port) {
+            text-align: start;
+          }
         }
         &__time {
           color: $color-secondary;
@@ -254,6 +271,13 @@ body {
 
         &__title {
           padding-bottom: 2rem;
+        }
+
+        @include respond(phone-port) {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
       }
 
@@ -274,8 +298,9 @@ body {
             left: 6.6rem;
           }
 
-          @include respond(phone-land) {
-            left: 6.6rem;
+          @include respond(phone-port) {
+            left: 3.5rem;
+            top: 6rem;
           }
         }
 
@@ -329,6 +354,10 @@ body {
         overflow: hidden;
         opacity: 0;
         border: 2px solid $color-secondary;
+        @include respond(phone-port) {
+          width: 70%;
+          height: 50%;
+        }
       }
 
       &:target {
@@ -354,6 +383,10 @@ body {
           width: 60%;
           &__group:not(:last-child) {
             margin-bottom: 1rem;
+          }
+
+          @include respond(phone-port) {
+            width: 80%;
           }
 
           &__time,
