@@ -465,12 +465,11 @@ body {
           font-size: 2rem;
           transition: all 0.2s;
           margin: 2rem 0;
-
+          cursor: pointer;
           @include respond(phone-port) {
             transform: rotate(-90deg);
             margin: 0;
             &:hover {
-              cursor: pointer;
               transform: rotate(-90deg) scale(1.8);
             }
           }
